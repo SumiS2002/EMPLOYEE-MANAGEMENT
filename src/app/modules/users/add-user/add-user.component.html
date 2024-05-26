@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-lg-10">
+            <h1 class="text-center">New Employee Details</h1>
+            <form #addEmpForm="ngForm"  class="border mt-3 p-3 rounded" >
+                    <div class="form-floating mb-3">
+                        <input #id="ngModel" name="id" [(ngModel)]="emp.id"  type="text" class="form-control" id="floatingInputID" placeholder="Employee ID" pattern="[a-zA-Z0-9]*" required>
+                        <label for="floatingInputID">Employee ID</label>
+                      </div>
+                      <div *ngIf="id.invalid && id.touched" class="mb-3 text-danger fw-bolder">*Invalid user ID</div>
+
+                      <div class="form-floating mb-3">
+                        <input #username="ngModel" name="username" [(ngModel)]="emp.username"  type="text" class="form-control" id="floatingInputName" placeholder="Employee Name" pattern="[a-zA-Z ]*" required>
+                        <label for="floatingInputName">Employee Name</label>
+                      </div>
+                      <div *ngIf="username.invalid && username.touched" class="mb-3 text-danger fw-bolder">*Invalid user Name</div>
+
+
+                      <div class="form-floating mb-3">
+                        <input #email="ngModel" name="email" [(ngModel)]="emp.email" type="text" class="form-control" id="floatingInputMail" placeholder="Employee Mail" email required>
+                        <label for="floatingInputMail">Employee Mail</label>
+                      </div>
+                      <div *ngIf="email.invalid && email.touched" class="mb-3 text-danger fw-bolder">*Invalid user Mail</div>
+
+                      <div class="form-floating mb-3">
+                        <select name="status" [(ngModel)]="emp.status"   class="form-control" id="floatingInputStatus" placeholder="Employee Status" required >
+                            <option value="" hidden disabled selected></option>
+                            <option value="1">Active</option>
+                            <option value="0">Inactive</option>
+                        </select>
+                        <label for="floatingInputStatus">Employee Status</label>
+                      </div> 
+
+                      
+                      <div class="d-flex ">
+                        <button (click)="addEmp()" [disabled]="addEmpForm.invalid"  class="btn btn-success">Save</button>
+                        <button (click)="cancel()" class="btn btn-primary ms-5">Cancel</button>
+
+                      </div>
+        </form>
+        
+    </div>
+</div>
+</div>
